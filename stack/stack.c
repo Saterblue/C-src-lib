@@ -1,5 +1,9 @@
 #include "stack.h"
 
+#define NULL_POINT		100
+#define STACK_IS_FULL		101
+#define STACK_NOT_EMPTY 	102
+
 STACK* createStack(){
 	STACK *st = malloc(sizeof(STACK));
 	st->length = 0;
@@ -8,26 +12,28 @@ STACK* createStack(){
 	return st;
 }
 
-void deleteStack(STACK* del) {
+int deleteStack(STACK* del) {
 	if(del == NULL)
-		return ;
+		return NULL_POINT;
 	if( del->length != 0 ) 
-		return ;
+		return STACK_NOT_EMPTY;
 	free(del->object);
 	free(del);
 	del = NULL;
+	return 0;
 }
 
-void push(STACK* st,void* obj){
+int push(STACK* st,void* obj){
 	if(st == NULL) 
-		return;
+		return NULL_POINT;
 	if(obj == NULL)
-		return;
+		return NULL_POINT;
 	if(st->length == st->max)
-		return;
+		return STACK_IS_FULL;
 	*(st->object) = obj ;
 	st->object++;
 	st->length++; 
+	return 0;
 }
 
 void* pop(STACK* st) {
