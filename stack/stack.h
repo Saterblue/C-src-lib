@@ -3,7 +3,7 @@
 
 #define NULL_POINT		100
 #define STACK_IS_FULL		101
-#define STACK_NOT_EMPTY 	102
+#define STACK_NOT_EMPTY		102
 
 typedef struct stack_protype{
 	int length;
