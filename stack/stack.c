@@ -11,9 +11,8 @@ STACK* createStack(){
 void deleteStack(STACK* del) {
 	if(del == NULL)
 		return ;
-	if( del->length != 0 ) {
+	if( del->length != 0 ) 
 		return ;
-	}
 	free(del->object);
 	free(del);
 	del = NULL;
