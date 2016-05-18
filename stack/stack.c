@@ -32,9 +32,9 @@ void push(STACK* st,void* obj){
 
 void* pop(STACK* st) {
 	if(st == NULL)
-		return;
+		return NULL;
 	if(st->length == 0)
-		return;		
+		return NULL;		
 	st->object--;
 	st->length--;
 	return *(st->object);
