@@ -13,7 +13,7 @@ typedef struct Stack_protype {
 	int* head;	
 }Stack;
 
-void InitStack(Stack* stack,int max);
+int InitStack(Stack* stack,int max);
 int push(Stack* stack,void* obj);
 void* pop(Stack *stack);
 int freeStack(Stack *stack);
