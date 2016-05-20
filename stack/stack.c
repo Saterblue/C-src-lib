@@ -1,9 +1,12 @@
 #include "stack.h"
 
-void InitStack(Stack* stack,int max) {
+int InitStack(Stack* stack,int max) {
 	stack->length=0;
 	stack->maxLength = max;
-	stack->head = (int*)malloc(sizeof(int*)*max);		
+	stack->head = (int*)malloc(sizeof(int*)*max);	
+	if(stack->head == NULL )
+		return STACK_INIT_FAIL;
+	return 0;
 }
 	
 int push(Stack* stack,void* obj) {		
