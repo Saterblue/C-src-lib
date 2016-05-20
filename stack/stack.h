@@ -1,17 +1,19 @@
 	
 #include <stdlib.h>
+	
+#define NULL_POINT		-1
+#define STACK_IS_FULL		-2
+#define STACK_NOT_INIT 		-3
+#define null_ptr 		NULL
 
-#define NULL_POINT		100
-#define STACK_IS_FULL		101
-#define STACK_NOT_EMPTY		102
+typedef struct Stack_protype {
+	int  length;
+	int  maxLength;		
+	int* head;	
+}Stack;
 
-typedef struct stack_protype{
-	int length;
-	int max;
-	void** object;
-}STACK;
+void InitStack(Stack* stack,int max);
+int push(Stack* stack,void* obj);
+void* pop(Stack *stack);
+int freeStack(Stack *stack);
 
-STACK* createStack();
-int deleteStack(STACK* del);
-int push(STACK* st,void* obj);
-void* pop(STACK* st);
