@@ -3,7 +3,7 @@
 void InitStack(Stack* stack,int max) {
 	stack->length=0;
 	stack->maxLength = max;
-	stack->head = (int*)malloc(sizeof(int)*max);		
+	stack->head = (int*)malloc(sizeof(int*)*max);		
 }
 	
 int push(Stack* stack,void* obj) {		
@@ -13,7 +13,7 @@ int push(Stack* stack,void* obj) {
 		return STACK_NOT_INIT;				
 	if( stack->length ==  stack->maxLength )
 		return STACK_IS_FULL;
-	*(int*)((int) stack->head + sizeof(int)*stack->length) = (int)obj;
+	*(int*)((int) stack->head + sizeof(int*)*stack->length) = (int)obj;
 	 stack->length++;
 	return 0;
 }
@@ -23,7 +23,7 @@ void* pop(Stack *stack) {
 		return NULL;
 	if(  stack->length == 0 )
 		return NULL;
-	int address = (int)stack->head + sizeof(int)*(stack->length - 1);
+	int address = (int)stack->head + sizeof(int*)*(stack->length - 1);
 	int* point = (int*)*(int*)(address);
 	stack->length--;
 	return (void*)point;
