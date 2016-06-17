@@ -1,6 +1,5 @@
 /*
 * a simply funtion call before rand(),just make rand() get more different;
-* 
 */
 #include <stdlib.h>
 
