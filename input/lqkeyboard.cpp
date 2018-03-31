@@ -29,6 +29,6 @@ void lq_resetkey()
     int i = 0;
     while(i != LQ_FLAG_INDEX)
     {
-        lq_keysets.state[i++]&=0;
+        lq_keysets.state[i++]=0;
     }
 }
