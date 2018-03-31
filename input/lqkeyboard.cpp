@@ -20,7 +20,7 @@ int lq_keyup(uint32_t key)
 int lq_checkKeyDown(uint32_t key)
 {
     _imkey;
-    return ((lq_keysets.state[i] & ( 1 << m)) == 0 ? 0 : 1);
+    return ((lq_keysets.state[i] & ( 1 << m )) == 0 ? 0 : 1);
 }
 
 
