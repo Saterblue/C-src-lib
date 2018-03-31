@@ -3,18 +3,21 @@
 
 #include <stdint.h>
 
+
+
 //set virtual-key max number
 #define LQ_VK_NUMBER_MAX    255
-#define LQ_FLAG_INDEX       ( (LQ_VK_NUMBER_MAX+1)/64 + ((LQ_VK_NUMBER_MAX+1)%64 == 0 ? 0 : 1) )
-
+#define LQ_BIT_NUMBERS      32
+#define LQ_FLAG_INDEX       ( (LQ_VK_NUMBER_MAX+1)/LQ_BIT_NUMBERS + ((LQ_VK_NUMBER_MAX+1)%LQ_BIT_NUMBERS == 0 ? 0 : 1) )
+//why use 32 bit not 64 bit?  1 << x ,if x > 32,its will have bug...
 //every bit as a keystate down/up
-//example state[0] is a uint64_t, consist of 64 bits, so it can store 64 key's state, key:[0-63]
-//all key up:      state[0] = 0b0000000000000000000000000000000000000000000000000000000000000000;
-//lq_keydown(3); = state[0] = 0b0000000000000000000000000000000000000000000000000000000000001000;
-//lq_keydown(2); = state[0] = 0b0000000000000000000000000000000000000000000000000000000000001100;
+//example status[0] is a uint32_t, consist of 32 bits, so it can store 64 key's status, key:[0-31]
+//all key up:      status[0] = 0b00000000000000000000000000000000;
+//lq_keydown(3); = status[0] = 0b00000000000000000000000000001000;
+//lq_keydown(2); = status[0] = 0b00000000000000000000000000000100;
 struct LQ_VK_SET
 {
-    uint64_t state[LQ_FLAG_INDEX];
+    uint32_t status[LQ_FLAG_INDEX];
 };
 
 //keysets
