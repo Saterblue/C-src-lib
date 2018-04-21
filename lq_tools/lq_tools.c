@@ -1,6 +1,3 @@
-
-
-
 #include    "lq_tools.h"
 
 int lq_getLocaltime(char* buffer,size_t bufferSize)
@@ -22,7 +19,6 @@ int lq_getLocaltime(char* buffer,size_t bufferSize)
 
 	return 0;
 }
-
 
 void lq_strToLower(char* text,size_t textLength)
 {
