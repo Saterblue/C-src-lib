@@ -1,6 +1,8 @@
 #ifndef LQ_TOOLS_ORZ
 #define LQ_TOOLS_ORZ
 
+//using c99
+
 #include    <stdio.h>
 #include    <string.h>
 #include    <time.h>
@@ -55,8 +57,7 @@ output:
 */
 static inline void lq_strToLower(char* text,size_t textLength)
 {
-    int i = 0;
-    for(; i < textLength; i++)
+    for(int i = 0; i < textLength; i++)
     {
         text[i] = tolower(text[i]);
     }
