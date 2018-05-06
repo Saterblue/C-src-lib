@@ -41,19 +41,23 @@ output:
 #endif
 
 //no jump
-#define lq_clean_error() (errno == 0 ? "None" : strerror(errno))
+#define lq_error_message() (errno == 0 ? "None" : strerror(errno))
 
-#define lq_log_err(M, ...) fprintf(stderr,"[ERROR] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, lq_clean_error(), ##__VA_ARGS__)
+#define lq_log_err(M, ...) fprintf(stderr,"[ERROR] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, lq_error_message(), ##__VA_ARGS__)
 
-#define lq_log_warn(M, ...) fprintf(stderr,"[WARN] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, lq_clean_error(), ##__VA_ARGS__ )
+#define lq_log_warn(M, ...) fprintf(stderr,"[WARN] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, lq_error_message(), ##__VA_ARGS__ )
 
 #define lq_log_info(M, ...) fprintf(stderr,"[INFO] (%s:%d) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 
-//jump to error;
-#define lq_check(A, M, ...) if(!(A)){ lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
-
+/***       jump to error             ***/
 #define lq_sentinel(M, ...) {lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
+
+/***       if(A) jump to error       ***/
+#define lq_error(A, M, ...) if((A)){ lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
+
+/***       if !(A) jump to error     ***/
+#define lq_check(A, M, ...) if(!(A)){ lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
 
 #define lq_check_mem(A) lq_check((A),"bad memory.")
 
