@@ -56,7 +56,7 @@ output:
 /***       if(A) jump to error       ***/
 #define lq_error(A, M, ...) if((A)){ lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
 
-/***       if !(A) jump to error     ***/
+/***       if(!A) jump to error     ***/
 #define lq_check(A, M, ...) if(!(A)){ lq_log_err(M, ##__VA_ARGS__); errno = 0; goto error;}
 
 #define lq_check_mem(A) lq_check((A),"bad memory.")
